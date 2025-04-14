@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencias Visuales entre Navegadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Estilo para la diferencia de fondo en Chrome */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .css-chrome {
+                background-color: #00bcd4; /* Cyan en Chrome */
+                color: white;
+                padding: 20px;
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+
+        /* Estilo para la diferencia de fondo en Firefox */
+        @-moz-document url-prefix() {
+            .css-firefox {
+                background-color: #ff5722; /* Naranja en Firefox */
+                color: white;
+                padding: 20px;
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+
+        .css-default {
+            background-color: #9e9e9e;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* Diferencia en el diseño de la barra de progreso */
+        progress {
+            width: 100%;
+            height: 30px;
+            margin-top: 20px;
+        }
+
+        /* Estilo del contenedor de JavaScript interactivo */
+        .js-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .js-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #6200ea;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .js-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Diferencias Visuales entre Navegadores</h1>
+
+    <!-- Sección 1: Diferencias en HTML -->
+    <section>
+        <h2>1. Diferencia en <code>&lt;progress&gt;</code> (barra de progreso)</h2>
+        <p>En Chrome y Firefox, la apariencia de la barra de progreso puede diferir.</p>
+        <progress value="60" max="100"></progress>
+    </section>
+
+    <!-- Sección 2: Diferencias en CSS -->
+    <section>
+        <h2>2. Diferencia en Estilos de Fondo</h2>
+        <p>Dependiendo del navegador, verás un fondo diferente:</p>
+        <div class="css-chrome">Este fondo es de color cian (Chrome)</div>
+        <div class="css-firefox">Este fondo es de color naranja (Firefox)</div>
+        <div class="css-default">Este fondo es gris (Navegador no identificado)</div>
+    </section>
+
+    <!-- Sección 3: Diferencia en JavaScript -->
+    <section class="js-container">
+        <h2>3. Diferencia en Interacción con JavaScript</h2>
+        <p>Haz clic en el botón para ver el mensaje del navegador:</p>
+        <button class="js-button" onclick="detectBrowser()">Detectar Navegador</button>
+        <div class="js-result" id="js-result"></div>
+    </section>
+
+    <script>
+        function detectBrowser() {
+            let message = "";
+            const resultDiv = document.getElementById("js-result");
+            if (navigator.userAgent.indexOf("Chrome") != -1) {
+                message = "¡Estás usando Google Chrome! Navegador rápido y seguro.";
+                resultDiv.style.color = "green";
+            } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+                message = "¡Estás usando Mozilla Firefox! Navegador con excelente privacidad.";
+                resultDiv.style.color = "orange";
+            } else {
+                message = "Navegador no detectado específicamente.";
+                resultDiv.style.color = "red";
+            }
+            resultDiv.textContent = message;
+        }
+    </script>
+
+</body>
+</html>
